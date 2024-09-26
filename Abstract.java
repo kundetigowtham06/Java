@@ -35,10 +35,14 @@ class Rectangle extends Shape {
 public class Main {
     public static void main(String[] args) {
         Scanner sc=new Scanner(System.in);
-        System.out.println(
+        System.out.println("Enter radius=");
+        r=sc.nextDouble();
+        System.out.println("Enter length and width of rectangle =");
+        l=nextInt();
+        w=nextInt();
  
-        Shape circle = new Circle(5);
-        Shape rectangle = new Rectangle(4, 6);
+        Shape circle = new Circle(r);
+        Shape rectangle = new Rectangle(l,w);
         System.out.println("Area of Circle=" + circle.Area());
         System.out.println("Area of Rectangle=" + rectangle.Area());
     }
