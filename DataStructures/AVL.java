@@ -66,6 +66,66 @@ public static AVLnode insert(int key,AVLnode node){
     node.height=Math.max(height(node.left),height(node.right))+1;
     return node;
 }
+public static AVLnode findMin(AVLnode node) {
+      if (node == null || node.left == null)
+       return node;
+       return findMin(node.left);
+}
+public static AVLnode delete(int key,AVLnode node){
+    if(node==null){
+        return node;
+    }
+    if(key<node.key){
+        node.left=delete(key,node.left);
+    }
+    else if(key>node.key){
+        node.right=delete(key,node.right);
+    }
+    else{
+        if(node.left!=null && node.right!=null){
+            AVLnode node1=findMin(node.right);
+            node.key=node1.key;
+            node.right=delete(node1.key, node.right);
+        }
+        else{
+            if(node.left!=null)
+                node=node.left;
+            else
+                node=node.right;
+        }
+        if(node!=null){
+            node.height=Math.max(height(node.left),height(node.right));
+            if(height(node.left)-height(node.right)==2){
+                if(height(node.left.left)>=height(node.left.right))
+                    node=LL(node);
+                else
+                    node=LR(node);
+            }
+            else if(height(node.right)-height(node.left)==2){
+                if(height(node.right.right)>=height(node.right.left))
+                    node=RR(node);
+                else
+                    node=RL(node);
+            }
+        }
+
+    }
+    return node;
+
+}
+public static boolean Search(int key,AVLnode node){
+    if(node==null)
+        return false;
+    else if(node.key==key)
+        return true;
+    else if(key<node.key)
+        return Search(key, node.left);
+    else if(key>node.key)
+        return Search(key, node.right);
+        
+    return false;
+    
+}
 public static void inOrder(AVLnode node){
     if(node!=null){
         inOrder(node.left);
@@ -88,5 +148,14 @@ public static void main(String args[]){
         root=insert(i,root);
     }
     inOrder(root);
+    System.out.println(" ");
+    delete(20,root);
+    inOrder(root);
+    if(Search(21, root)){
+        System.out.println("Key is found");
+    }
+    else{
+        System.out.println("Key is not found");
+    }
 }
 }
