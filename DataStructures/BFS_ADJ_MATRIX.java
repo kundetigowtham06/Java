@@ -33,7 +33,7 @@ public class BFSADJ {
         System.out.print("no of vertices: ");
         int v = sc.nextInt();
         BFSADJ bfs = new BFSADJ(v);
-        System.out.println("Enter adjacency matrix: " + v + "x" + v); 
+        System.out.println("Enter adjacency matrix: "); 
         for (int i = 0; i < v; i++) {
             for (int j = 0; j < v; j++) {
                 bfs.adj[i][j] = sc.nextInt();
