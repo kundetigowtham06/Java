@@ -25,7 +25,7 @@ public class Fraction_Knapsack {
                 double fraction = (double) m / i.weight;
                 profit += i.profit * fraction;
                 m -= i.weight * fraction;
-                break;  // All capacity used up
+                break; 
             }
         }
         return profit;
