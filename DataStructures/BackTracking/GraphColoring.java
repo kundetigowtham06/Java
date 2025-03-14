@@ -20,22 +20,29 @@ public class GraphColoring {
         return true;
     }
 
-    public static void coloring(int k, int colors) {
+    public static boolean coloring(int k, int colors) {
         if (k == v) {
-            for (int i = 0; i < v; i++) {
-                System.out.print(x[i] + " ");
-            }
-            System.out.println();
-            return;
+            return true;
         }
 
         for (int i = 1; i <= colors; i++) {
             if (isSafe(k, i)) {
                 x[k] = i;
-                coloring(k + 1, colors);
+                if (coloring(k + 1, colors)) {
+                    return true;
+                }
                 x[k] = 0;
             }
         }
+        return false;
+    }
+
+    public static int findChromaticNumber() {
+        int colors = 1;
+        while (!coloring(0, colors)) {
+            colors++;
+        }
+        return colors;
     }
 
     public static void main(String[] args) {
@@ -45,15 +52,15 @@ public class GraphColoring {
         int v = sc.nextInt();
         GraphColoring g = new GraphColoring(v);
 
-        System.out.println("Enter the adjacency matrix :");
+        System.out.println("Enter the adjacency matrix:");
         for (int i = 0; i < v; i++) {
             for (int j = 0; j < v; j++) {
                 g.adj[i][j] = sc.nextInt();
             }
         }
 
-        int colors = v;
-        coloring(0, colors);
+        int chromaticNumber = findChromaticNumber();
+        System.out.println("The minimum number of colors needed is: " + chromaticNumber);
 
         sc.close();
     }
