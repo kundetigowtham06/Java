@@ -61,6 +61,9 @@ public class GraphColoring {
 
         int chromaticNumber = findChromaticNumber();
         System.out.println("The minimum number of colors needed is: " + chromaticNumber);
+        for(int i:x){
+            System.out.print(i+" ");
+        }
 
         sc.close();
     }
