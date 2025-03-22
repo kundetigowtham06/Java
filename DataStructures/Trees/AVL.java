@@ -12,7 +12,7 @@ class AVLnode{
 }
 public class AVL{
 public static int height(AVLnode node){
-    if(node==null){
+    if(node==null){ 
         return -1;
     }
     return node.height;
