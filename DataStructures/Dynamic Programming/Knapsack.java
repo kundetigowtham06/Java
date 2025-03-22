@@ -1,13 +1,27 @@
 import java.util.Scanner;
 
-public class Knapsack{
+public class Knapsack2{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter number of Objects:");
         int n = sc.nextInt();
-        int[] p = {1, 2, 5, 6};
-        int[] w = {2, 3, 4, 5};
-        int m = 8;
+        
+        int[] p = new int[n];
+        int[] w = new int[n];
+        
+        System.out.println("Enter profits for each object:");
+        for (int i = 0; i < n; i++) {
+            p[i] = sc.nextInt();
+        }
+        
+        System.out.println("Enter weights for each object:");
+        for (int i = 0; i < n; i++) {
+            w[i] = sc.nextInt();
+        }
+        
+        System.out.println("Enter maximum weight of knapsack:");
+        int m = sc.nextInt();
+        
         knapsack(m, w, p, n);
     }
 
