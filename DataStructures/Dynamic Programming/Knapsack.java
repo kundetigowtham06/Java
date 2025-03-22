@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Knapsack {
+public class Knapsack2{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter number of Objects:");
@@ -24,19 +24,22 @@ public class Knapsack {
                 }
             }
         }
-
+        int[] ar=new int[n];
         int i = n, j = m;
         while (i > 0 && j > 0) {
             if (k[i][j] == k[i - 1][j]) {
-                System.out.println("index " + i + " 0");
+                ar[i-1]=0;
                 i--;
             } else {
-                System.out.println("index " + i + " 1");
+                ar[i-1]=1;
                 i--;
                 j -= w[i];
             }
         }
 
         System.out.println("Maximum profit: " + k[n][m]);
+        for(int num:ar){
+            System.out.print(num+" ");
+        }
     }
 }
